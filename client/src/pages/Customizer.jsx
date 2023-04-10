@@ -47,13 +47,25 @@ const Customizer = () => {
 const handleActiveFilterTab = (tabName) => {
   switch (tabName) {
     case "logoShirt":
-      state.isLogoTextured = !activeFilterTab(tabName)
+        state.isLogoTextured = !activeFilterTab[tabName];
+      break;
     case "stylishShirt":
-      state.isFullTextured = !activeFilterTab(tabName)
+        state.isFullTextured = !activeFilterTab[tabName];
+      break;
     default:
-      state.isLogoTextured = true
-      state.isFullTextured = false
+      state.isLogoTextured = true;
+      state.isFullTextured = false;
+      break;
   }
+
+  // after setting the state, activeFilterTab is updated
+
+  setActiveFilterTab((prevState) => {
+    return {
+      ...prevState,
+      [tabName]: !prevState[tabName]
+    }
+  })
 }
 
 const handleDecals = (type, result) => {
@@ -115,13 +127,13 @@ const readFile = (type) => {
             {...slideAnimation('up')}
           >
             {FilterTabs.map((tab) => (
-                  <Tab
-                    key={tab.name}
-                    tab={tab}
-                    isFilterTab
-                    isActiveTab=""
-                    handleClick={() => {}}
-                  />
+              <Tab
+                key={tab.name}
+                tab={tab}
+                isFilterTab
+                isActiveTab={activeFilterTab[tab.name]}
+                handleClick={() => handleActiveFilterTab(tab.name)}
+              />
             ))}
           </motion.div>
         </>
