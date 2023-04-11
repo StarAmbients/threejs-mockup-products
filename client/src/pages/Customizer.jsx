@@ -43,7 +43,6 @@ const Customizer = () => {
           generatingImg={generatingImg}
           handleSubmit={handleSubmit}
         />
-
       default:
         return null
     }
@@ -105,7 +104,7 @@ const handleDecals = (type, result) => {
 
   state[decalType.stateProperty] = result
 
-  if (!activeEditorTab[decalType.filterTab]) {
+  if (!activeFilterTab[decalType.filterTab]) {
     handleActiveFilterTab(decalType.filterTab)
   }
 }

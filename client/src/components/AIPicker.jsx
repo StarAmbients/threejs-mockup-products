@@ -2,7 +2,7 @@ import React from 'react'
 
 import CustomButton from './CustomButton';
 
-const AIPicker = (prompt, setPrompt, generatingImg, handleSubmit) => {
+const AIPicker = ({ prompt, setPrompt, generatingImg, handleSubmit }) => {
   return (
     <div className="aipicker-container"
     >
@@ -26,14 +26,14 @@ const AIPicker = (prompt, setPrompt, generatingImg, handleSubmit) => {
             <CustomButton
             type="outline"
             title="AI Logo"
-            customStyles="text-xs"
             handleClick={() => handleSubmit('logo')}
+            customStyles="text-xs"
             />
             <CustomButton
             type="filled"
             title="AI Full"
-            customStyles="text-xs"
             handleClick={() => handleSubmit('full')}
+            customStyles="text-xs"
             />
           </>
         )}
