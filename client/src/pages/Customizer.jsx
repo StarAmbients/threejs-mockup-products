@@ -30,12 +30,14 @@ const Customizer = () => {
     switch (activeEditorTab) {
       case "colorpicker":
         return <ColorPicker />
+        break
       case "filepicker":
         return <FilePicker 
           file={file}
           setFile={setFile}
           readFile={readFile}
         />
+        break
       case "aipicker":
         return <AIPicker
           prompt={prompt}
@@ -43,6 +45,7 @@ const Customizer = () => {
           generatingImg={generatingImg}
           handleSubmit={handleSubmit}
         />
+        break
       default:
         return null
     }
@@ -166,6 +169,13 @@ const readFile = (type) => {
                 handleClick={() => handleActiveFilterTab(tab.name)}
               />
             ))}
+            <button className='download-btn' onClick={downloadCanvasToImage}>
+              <img
+                src={download}
+                alt='download_image'
+                className='w-3/5 h-3/5 object-contain'
+              />
+            </button>
           </motion.div>
         </>
       )}
